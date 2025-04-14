@@ -131,6 +131,15 @@ const calendar = {
             const dom = domParsers.parseFromString(html, "text/html");
             const li = dom.querySelector("li");
 
+            let selectedDate = null; // 클릭한 날짜 저장용
+
+            li.addEventListener("click", function () {
+
+                const viewEl = document.getElementById("form-wrapper");
+                viewEl.style.display = (viewEl.style.display === "block") ? "none" : "block";
+            });
+
+            targetEl.append(li);
             li.addEventListener("click", () => {
                 selectedDate = str;
                 const formWrapper = document.getElementById("form-wrapper");
@@ -155,7 +164,7 @@ window.addEventListener("DOMContentLoaded", function () {
     todo.init();
     calendar.init();
 
-    const quill = new Quill('#todo-content', { theme: 'bubble' });
+    const quill = new Quill('#sche-content', { theme: 'bubble' });
     const frmRegist = document.getElementById("schedule-regist");
 
     frmRegist.addEventListener("submit", function (e) {
@@ -230,3 +239,58 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+    let selectedDate = null;
+    const form = document.getElementById('schedule-regist');
+    const quill = new Quill('#sche-content', { theme: 'bubble' });
+  
+    // 날짜 클릭 시 선택한 날짜 저장
+    document.querySelectorAll('#calendar-dates li').forEach(li => {
+      li.addEventListener('click', () => {
+        const day = li.querySelector('.date').textContent.padStart(2, '0');
+        const year = document.querySelector('.calendar-nav .year').textContent;
+        const month = document.querySelector('.calendar-nav .month').textContent.padStart(2, '0');
+        selectedDate = `${year}-${month}-${day}`;
+      });
+    });
+  
+    // 폼 제출 시 localStorage 저장
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+  
+      if (!selectedDate) {
+        alert('날짜를 먼저 선택하세요.');
+        return;
+      }
+  
+      const title = form.title.value.trim();
+      const content = quill.root.innerHTML.trim();
+  
+      if (!title || !content) {
+        alert('제목과 내용을 모두 입력해주세요.');
+        return;
+      }
+  
+      const item = {
+        seq: Date.now(),
+        date: selectedDate,
+        title,
+        content
+      };
+  
+      // 날짜별 key로 localStorage에 저장
+      const storageKey = `todos-${selectedDate}`;
+      const existing = JSON.parse(localStorage.getItem(storageKey)) || [];
+      existing.push(item);
+      localStorage.setItem(storageKey, JSON.stringify(existing));
+  
+      alert(`${selectedDate} 스케줄이 저장되었습니다.`);
+  
+      // 초기화
+      form.title.value = '';
+      quill.root.innerHTML = '';
+      selectedDate = null;
+    });
+  });
+  
