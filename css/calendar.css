@@ -141,3 +141,18 @@ svg{
 #form-wrapper.show {
     display: block;
 }
+/*저장된 날만 색깔 저장하기*/
+.saved{
+    background-color :#27391C !important;
+}
+ 
+/* 토요일 일요일 색깔 지정*/
+#calendar-yoil > li:nth-of-type(7n), #calendar-dates > li:nth-of-type(7n) {
+    color: blue;
+    font-weight: bold;
+}
+
+#calendar-yoil > li:nth-of-type(7n+1), #calendar-dates > li:nth-of-type(7n+1) {
+    color: red;
+    font-weight: bold;
+}

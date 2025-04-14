@@ -107,7 +107,7 @@ const calendar = {
             
         });
         
-                targetEl.append(li);
+                
     }
 }
         
