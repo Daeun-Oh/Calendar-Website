@@ -102,6 +102,9 @@ const calendar = {
 
 window.addEventListener("DOMContentLoaded", function() {
     calendar.init();
+    const quill = new Quill('#todo-content', { //quill 내용
+        theme: 'bubble',
+      })
 
     const navBtns = document.getElementsByClassName("nav-btn");
     for (const el of navBtns) {
