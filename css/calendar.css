@@ -38,7 +38,6 @@ img {
 #calendar-dates, #calendar-yoil {
     display: flex;
     flex-wrap: wrap;
-    height: 50px;
 }
 
 #calendar-dates > li, #calendar-yoil > li {
