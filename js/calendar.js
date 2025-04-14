@@ -36,7 +36,7 @@ const calendar = {
         const startDate = new Date(year, month - 1, 1);
         const endDate = new Date(year, month - 1, 1);
         endDate.setMonth(endDate.getMonth() + 1)
-        endDate.setDate(endDate.getDate() - 1);
+        endDate.setDate(endDate.getDate() - 1); 
 
         const startYoil = startDate.getDay(); // 요일 
 
