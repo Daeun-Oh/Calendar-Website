@@ -85,6 +85,9 @@ const calendar = {
 
             const dom = domParser.parseFromString(html, "text/html");
             const li = dom.querySelector("li");
+            li.addEventListener("click", function() {
+                this.classList.toggle("on");
+            });
             targetEl.append(li);
         });
         // 달력 일자 출력 E

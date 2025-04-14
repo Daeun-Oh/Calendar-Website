@@ -62,14 +62,11 @@ img {
     border-left: 1px solid #000;
 }
 
-#calendar-dates input[type='button'] {
-    display: none;
+#calendar-dates > li .content {
+    opacity: 0;
+    transition: all 1s;
 }
 
-/* #calendar-dates input[type='button'] + label {
-    cursor: pointer;
-} */
-
-#calendar-dates input[type='button']:checked + label {
-    background-color: blue;
+#calendar-dates > li.on .content {
+    opacity: 1;;
 }
