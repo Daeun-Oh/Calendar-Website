@@ -131,7 +131,7 @@ const calendar = {
             const dom = domParsers.parseFromString(html, "text/html");
             const li = dom.querySelector("li");
 
-            let selectedDate = null; // 클릭한 날짜 저장용
+            //let selectedDate = null; // 클릭한 날짜 저장용
 
             li.addEventListener("click", function () {
 
@@ -139,16 +139,16 @@ const calendar = {
                 viewEl.style.display = (viewEl.style.display === "block") ? "none" : "block";
             });
 
-            targetEl.append(li);
+            targetEls.append(li);
             li.addEventListener("click", () => {
                 selectedDate = str;
                 const formWrapper = document.getElementById("form-wrapper");
                 formWrapper.style.display = "block";
-                document.getElementById("todo-title").focus();
+                document.getElementById("sche-title").focus();
 
-                const quillContainer = document.querySelector('#todo-content .ql-editor');
+                const quillContainer = document.querySelector('#sche-content .ql-editor');
                 if (!quillContainer) {
-                    new Quill('#todo-content', { theme: 'bubble' });
+                    new Quill('#sche-content', { theme: 'bubble' });
                 }
 
                 const scheduleEl = document.getElementById("schedule-items");
@@ -247,50 +247,67 @@ window.addEventListener('DOMContentLoaded', () => {
   
     // 날짜 클릭 시 선택한 날짜 저장
     document.querySelectorAll('#calendar-dates li').forEach(li => {
-      li.addEventListener('click', () => {
-        const day = li.querySelector('.date').textContent.padStart(2, '0');
-        const year = document.querySelector('.calendar-nav .year').textContent;
-        const month = document.querySelector('.calendar-nav .month').textContent.padStart(2, '0');
-        selectedDate = `${year}-${month}-${day}`;
-      });
+        li.addEventListener('click', () => {
+            const day = li.querySelector('.date').textContent.padStart(2, '0');
+            const year = document.querySelector('.calendar-nav .year').textContent;
+            const month = document.querySelector('.calendar-nav .month').textContent.padStart(2, '0');
+
+            // 같은 날짜를 연속 2번 누르면 selectedDate가 null이 되게 (+ 스케줄 작성 영역이 사라지게)
+            selectedDate = selectedDate === `${year}-${month}-${day}` ? null : `${year}-${month}-${day}`;
+            //console.log(selectedDate);
+        });
     });
   
     // 폼 제출 시 localStorage 저장
     form.addEventListener('submit', (e) => {
-      e.preventDefault();
-  
-      if (!selectedDate) {
-        alert('날짜를 먼저 선택하세요.');
-        return;
-      }
-  
-      const title = form.title.value.trim();
-      const content = quill.root.innerHTML.trim();
-  
-      if (!title || !content) {
-        alert('제목과 내용을 모두 입력해주세요.');
-        return;
-      }
-  
-      const item = {
-        seq: Date.now(),
-        date: selectedDate,
-        title,
-        content
-      };
-  
-      // 날짜별 key로 localStorage에 저장
-      const storageKey = `todos-${selectedDate}`;
-      const existing = JSON.parse(localStorage.getItem(storageKey)) || [];
-      existing.push(item);
-      localStorage.setItem(storageKey, JSON.stringify(existing));
-  
-      alert(`${selectedDate} 스케줄이 저장되었습니다.`);
-  
-      // 초기화
-      form.title.value = '';
-      quill.root.innerHTML = '';
-      selectedDate = null;
-    });
+        e.preventDefault();
+    
+        if (!selectedDate) {
+            alert('날짜를 먼저 선택하세요.');
+            return;
+        }
+    
+        const title = form.title.value.trim();
+        const content = quill.root.innerHTML.trim();
+    
+        if (!title || !content) {
+            alert('제목과 내용을 모두 입력해주세요.');
+            return;
+        }
+    
+        const item = {
+            seq: Date.now(),
+            date: selectedDate,
+            title,
+            content
+        };
+    
+        // 날짜별 key로 localStorage에 저장
+        const storageKey = `schedule-${selectedDate}`;
+        const existing = JSON.parse(localStorage.getItem(storageKey)) || [];
+        existing.push(item);
+        localStorage.setItem(storageKey, JSON.stringify(existing));
+    
+        const formA = document.getElementById("above-form-inner");
+
+        formA.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+            <symbol id="check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </symbol>
+        </svg>
+        <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" width="20" height="20"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+                An example success alert with an icon
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>`;//alert(`${selectedDate} 스케줄이 저장되었습니다.`);
+    
+        // 초기화
+        form.title.value = '';
+        quill.root.innerHTML = '';
+        //selectedDate = null;
+        });
   });
   
