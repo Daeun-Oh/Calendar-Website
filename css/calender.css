@@ -1,3 +1,71 @@
+
+/* 달력 */
+#calendar-dates {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#calendar-dates > li {
+    width: calc(100% / 7);
+}
+
+#calendar-dates input[type='radio'] {
+    display: none;
+}
+
+#calendar-dates input[type='radio'] + label {
+    cursor: pointer;
+}
+
+#calendar-dates input[type='radio']:checked + label {
+    color: blue; 
+}
+
+/* 달력 버튼 S */
+.nav-btn.prev {
+    width: 32px;
+    height: 32px;
+    background: transparent url("../image/up.png") no-repeat center center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 20px;
+}
+
+.nav-btn.next {
+    width: 32px;
+    height: 32px;
+    background: transparent url("../image/down.png") no-repeat center center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    margin: 10px 0;
+}
+
+.nav-btn {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* 달력 버튼 E */
+
+/* 내용 */
 svg{
     position: relative;
     top: 2px;
@@ -7,55 +75,139 @@ svg{
     height: 300px;
 }
 
-.asdf{
-
+/* 기본 스타일 초기화 S */
+html {
+    font-size: 13px;
+    background: #ccc;
 }
 
-
-.u-button{
-    position: absolute;
-    display: flex;
-    justify-content: right;
-    right: 130.5px;
-    margin-top: 10px;
-}
-
-.d-button{
-    position: absolute;
-    display: flex;
-    justify-content: right;
-    right: 71.5px;
-    margin-top: 10px;
-}
-.u-button, .d-button{
-    width: 40px;
-    height: 40px;
-}
-
-.u-button .up{
+body {
+    margin: 0;
+    color: #000;
     width: 100%;
-    height: 100%;
-    background: #fff url("../image/up.png") no-repeat center center;
-    background-size: contain;
+    max-width: 1050px;
+    min-width: 750px;
+    background: #fff;
+    margin: 0 auto;
+    min-height: 1000px;
 }
-.d-button .down{
-    width: 100%;
-    height: 100%;
-    background: #fff url("../image/down.png") no-repeat center center;
-    background-size: contain;
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-.btn img{
-    margin-left: 10px;
+
+a {
+    text-decoration: none;
+    color: #000;
 }
-.up, .down {
-    width: 24px;
-    height: 24px;
-    background-repeat: no-repeat;
-    background-position: center;
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+img {
+    border: 0;
+}
+/* 기본 스타일 초기화 E */
+
+#calendar-dates, #calendar-yoil {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#calendar-dates > li, #calendar-yoil > li {
+    width: calc(100% / 7);
+    height: 50px;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+#calendar-dates > li:nth-of-type(7n + 1) { 
+    border-left: 1px solid #000;
+}
+
+
+
+#calendar-yoil > li {
+    border-top: 1px solid #000;
+}
+
+#calendar-yoil > li:first-of-type {
+    border-left: 1px solid #000;
+}
+
+#calendar-dates > li .content {
+    opacity: 0;
+    transition: all 1s;
+}
+
+#calendar-dates > li.on .content {
+    opacity: 1;;
+}
+
+/* 달력 */
+#calendar-dates {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#calendar-dates > li {
+    width: calc(100% / 7);
+}
+
+/* 달력 버튼 S */
+.nav-btn.prev {
+    width: 32px;
+    height: 32px;
+    background: transparent url("../image/up.png") no-repeat center center;
     background-size: contain;
-    background-color: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
-    margin: 0;
+    margin-right: 20px;
+}
+
+.nav-btn.next {
+    width: 32px;
+    height: 32px;
+    background: transparent url("../image/down.png") no-repeat center center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    margin: 10px 0;
+}
+
+.nav-btn {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* 달력 버튼 E */
+
+/* 내용 */
+
+svg{
+    position: relative;
+    top: 2px;
+}
+
+#todo-content{
+    height: 300px;
 }
