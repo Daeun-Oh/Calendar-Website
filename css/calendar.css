@@ -146,6 +146,9 @@ svg{
 
 }
 
-.asdf{
-    height: 300px;
+#form-wrapper {
+    display: none;
+}
+#form-wrapper.show {
+    display: block;
 }
