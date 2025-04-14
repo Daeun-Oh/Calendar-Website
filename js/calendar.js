@@ -304,8 +304,10 @@ window.addEventListener('DOMContentLoaded', () => {
         selectedDate = null;
         document.getElementById("form-wrapper").style.display = "none";
 
-        // 스케줄 목록 다시 렌더링
+      // 스케줄 목록 
         sche.init();
+    // 캘린더 새로고침
+        calendar.render();
     });
   });
   
