@@ -13,9 +13,16 @@
     </head>
     <body> 
         <nav class="navbar bg-body-tertiary">
-            <div class="container asdf mt-3">
-                <h1> 일정 관리</h1>
-                <h4 id="today-date" class="text-end text-secondary"></h4>            
+            <div class="container">
+                
+                <div class="container asdf mt-3">
+                    <h1> 일정 관리</h1>
+                    <h4 id="today-date" class="text-end text-secondary"></h4>
+                    <script>
+                       
+                    </script>
+                    
+                </div>
             </div>
         </nav>
 
@@ -42,9 +49,12 @@
             <ul class="dates" id="calendar-dates">
                 
             </ul>
-        
         </div>
-        <h2 class="mt-3">스케줄 등록하기</h2>
+
+
+
+        <div class="container">
+            <h2 class="mt-3">스케줄 등록하기</h2>
             
             <form id="schedule-regist" name="frmRegist" autocomplete="off" class="mb-5">
                 <div class="mb-3">
@@ -52,8 +62,8 @@
                     <input type="text" id="todo-title" name="title" class="form-control" placeholder="제목을 입력하세요.">
                 </div>
                 <div class="mb-3">
-                    <label for="todo-content" class="form-label" >내용</label>
-                    <div id="todo-content" class="border" pla></div>
+                    <label for="todo-content" class="form-label">내용</label>
+                    <div id="todo-content" class="border"></div>
                 </div>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-lg btn-primary">
@@ -66,8 +76,14 @@
                     </button>
                 </div>
             </form>
-        
 
+            <h2>스케줄 목록</h2>
+            <div class="accordion" id="schedule-items"></div>
+        </div>
+
+        <div class="calendar-box">
+            <ul class="dates" id="calendar-dates"></ul>
+        </div>
 
         <script type="text/html" id="tpl-calendar">
             <li class="view-schedule">
