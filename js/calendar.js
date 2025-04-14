@@ -284,11 +284,16 @@ window.addEventListener('DOMContentLoaded', () => {
     // 날짜 클릭 시 선택한 날짜 저장
     document.querySelectorAll('#calendar-dates li').forEach(li => {
         li.addEventListener('click', () => {
+            document.querySelectorAll('#calendar-dates li.selected').forEach(el => {
+                el.classList.remove('selected')
+            });
             const day = li.querySelector('.date').textContent.padStart(2, '0');
             const year = document.querySelector('.calendar-nav .year').textContent;
             const month = document.querySelector('.calendar-nav .month').textContent.padStart(2, '0');
          
             selectedDate = `${year}-${month}-${day}`;
+            li.classList.add('selected'); // 현재 클릭한 날짜에 클래스 추가
+
 
         });
     });
