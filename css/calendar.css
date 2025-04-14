@@ -93,16 +93,17 @@ img {
 /*날짜가 선택될 경우 S*/
 #calendar-dates > li {
     cursor: pointer;
-    }
-    
-    #calendar-dates > li:hover {
+}
+
+#calendar-dates > li:hover {
     background-color: #ccc
-    }
-    
-    #calendar-dates > li.selected {
+}
+
+#calendar-dates > li.selected {
     background-color: #007bff;
-    }
-    /* 날짜가 선택될 경우  E*/
+}
+/* 날짜가 선택될 경우  E*/
+
 /* 스케줄 개수 뱃지 S */
 .badge {
     font-size: 0.75rem;
