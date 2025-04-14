@@ -161,12 +161,30 @@ const calendar = {
             const dom = domParser.parseFromString(html, "text/html");
             const li = dom.querySelector("li");
 
+            // 스케줄 개수 S //
+
+            // 스케줄 개수 계산
+            const storageKey = `sches-${str}`;
+            const data = JSON.parse(localStorage.getItem(storageKey)) || [];
+            const count = data.length;
+
+            // 개수 표시 엘리먼트 추가
+            if (count > 0) {
+                const badge = document.createElement("span");
+                badge.className = "badge bg-info text-white ms-1";
+                badge.textContent = `${count}개`;
+                li.querySelector(".date").after(badge); // .date 다음에 뱃지를 붙임
+            }
+
+            // 스케줄 개수 E //
+            
 
             //let selectedDate = null; // 클릭한 날짜 저장용
           
             // 날짜 클릭 이벤트
             li.addEventListener("click", () => {
                 selectedDate = str; // 선택한 날짜 저장
+
                 const formWrapper = document.getElementById("form-wrapper");
                 formWrapper.style.display = "block"; // 폼 보이기
               //formWrapper.style.display = (formWrapper.style.display === "block") ? "none" : "block";
@@ -319,6 +337,7 @@ window.addEventListener('DOMContentLoaded', () => {
       form.title.value = '';
       quill.root.innerHTML = '';
       selectedDate = null;
+
     });
   });
   

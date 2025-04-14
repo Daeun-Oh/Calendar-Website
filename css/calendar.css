@@ -88,6 +88,16 @@ img {
     width: calc(100% / 7);
 }
 
+/* 달력 E */
+
+/* 스케줄 개수 뱃지 S */
+.badge {
+    font-size: 0.75rem;
+    padding: 0.3em 0.5em;
+    border-radius: 1rem;
+}
+/* 스케줄 개수 뱃지 E */
+
 /* 달력 버튼 S */
 .nav-btn.prev {
     width: 32px;
@@ -131,12 +141,6 @@ img {
 }
 
 /* 달력 버튼 E */
-
-/* 알림 영역 S */
-.above-form {
-    margin: 10px 0;
-}
-
 
 /* 내용 */
 
