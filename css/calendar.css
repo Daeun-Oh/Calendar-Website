@@ -134,7 +134,6 @@ svg{
 
 #todo-content {
     height: 300px;
-<<<<<<< HEAD
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 0.375rem;
@@ -143,8 +142,6 @@ svg{
     color: #212529;
     font-size: 14px;
   }
-=======
-}
 
 #form-wrapper {
     display: none;
@@ -167,4 +164,3 @@ svg{
     color: red;
     font-weight: bold;
 }
->>>>>>> clickEvent
