@@ -34,37 +34,35 @@
             </div>
         </nav>
 
-        <div class="calendar-nav">
-            <div>
-            <span class="year"></span>. 
-            <span class="month"></span>
+        <div class="container">
+            <div class="calendar-nav">
+                <div>
+                <span class="year"></span>. 
+                <span class="month"></span>
+                </div>
+                <div>
+                <button type="button" class="nav-btn prev" title="이전 달"></button>
+                <button type="button" class="nav-btn next" title="다음 달"></button>
+                </div>
             </div>
-            <div>
-            <button type="button" class="nav-btn prev" title="이전 달"></button>
-            <button type="button" class="nav-btn next" title="다음 달"></button>
-            </div>
-          </div>
-        <ul class="yoil">
-            <li>일</li>
-            <li>월</li>
-            <li>화</li>
-            <li>수</li>
-            <li>목</li>
-            <li>금</li>
-            <li>토</li>
-        </ul>
-        <ul class="dates" id="calendar-dates">
-            
-        </ul>
-        <script type="text/html" id="tpl-calendar">
-            <li>
-                <input type="radio" name="date" value="#{value}" id="date-#{value}">
-                <label for="date-#{value}">
+            <ul class="yoil" id="calendar-yoil">
+                <li>일</li>
+                <li>월</li>
+                <li>화</li>
+                <li>수</li>
+                <li>목</li>
+                <li>금</li>
+                <li>토</li>
+            </ul>
+            <ul class="dates" id="calendar-dates">
+                
+            </ul>
+            <script type="text/html" id="tpl-calendar">
+                <li>
                     <div class="date">#{date}</div>
-                </label>
-            </li>
-        </script>
-
+                </li>
+            </script>
+        </div>
 
 
 
