@@ -38,7 +38,6 @@ img {
 #calendar-dates, #calendar-yoil {
     display: flex;
     flex-wrap: wrap;
-    height: 50px;
 }
 
 #calendar-dates > li, #calendar-yoil > li {
@@ -126,6 +125,7 @@ img {
 /* 달력 버튼 E */
 
 /* 내용 */
+
 svg{
     position: relative;
     top: 2px;

@@ -12,6 +12,12 @@ const calendar = {
         this.year = date.getFullYear();
         this.month = date.getMonth() + 1;
         
+
+        const month = ("" + this.month).padStart(2, '0');
+        const day = ('' + date.getDate()).padStart(2, '0');
+        document.getElementById('today-date').textContent = `오늘 날짜: ${this.year}-${month}-${day}`;
+          
+
         this.render();
     },
     // 달력 일자
