@@ -84,21 +84,34 @@ const calendar = {
 
         // 달력 일자 출력 S 
         targetEl.innerHTML = "";
-        items.forEach(({day, str}) => {
+        items.forEach(({day, str }) => {
             let html = this.tpl;
             html = html.replace(/#{value}/g, str)
                         .replace(/#{date}/g, ("" + day).padStart(2, '0'));
-
+                      
             const dom = domParser.parseFromString(html, "text/html");
             const li = dom.querySelector("li");
+
             li.addEventListener("click", function() {
-                this.classList.toggle("on");
+              const viewEl = document.getElementById("form-wrapper");
+              
+                if (viewEl.style.display === "block") {
+                    viewEl.style.display = "none";
+                } else {
+                    viewEl.style.display = "block";
+                }
+
             });
             targetEl.append(li);
+           
+            
         });
-        // 달력 일자 출력 E
+        
+                
     }
-};
+}
+        
+        // 달력 일자 출력 E
 
 window.addEventListener("DOMContentLoaded", function() {
     calendar.init();

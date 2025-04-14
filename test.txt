@@ -1,0 +1,15 @@
+targetEl.innerHTML = "";
+        items.forEach(({day, str }) => {
+            let html = this.tpl;
+            html = html.replace(/#{value}/g, str)
+                        .replace(/#{date}/g, ("" + day).padStart(2, '0'));
+                      
+            const dom = domParser.parseFromString(html, "text/html");
+            const li = dom.querySelector("li");
+
+            li.addEventListener("click", function() {
+                this.classList.toggle("on");
+            });
+            targetEl.append(li);
+            
+        });

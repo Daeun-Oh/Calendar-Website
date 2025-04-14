@@ -134,6 +134,7 @@ svg{
 
 #todo-content {
     height: 300px;
+<<<<<<< HEAD
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 0.375rem;
@@ -142,3 +143,28 @@ svg{
     color: #212529;
     font-size: 14px;
   }
+=======
+}
+
+#form-wrapper {
+    display: none;
+}
+#form-wrapper.show {
+    display: block;
+}
+/*저장된 날만 색깔 저장하기*/
+.saved{
+    background-color :#27391C !important;
+}
+ 
+/* 토요일 일요일 색깔 지정*/
+#calendar-yoil > li:nth-of-type(7n), #calendar-dates > li:nth-of-type(7n) {
+    color: blue;
+    font-weight: bold;
+}
+
+#calendar-yoil > li:nth-of-type(7n+1), #calendar-dates > li:nth-of-type(7n+1) {
+    color: red;
+    font-weight: bold;
+}
+>>>>>>> clickEvent
