@@ -287,7 +287,8 @@ window.addEventListener('DOMContentLoaded', () => {
             if (li.classList.contains('selected')) {
                 li.classList.remove('selected');
             } else {
-                document.querySelectorAll('#calendar-dates li selected').forEach(el => {
+                document.querySelectorAll('#calendar-dates li.selected').forEach(el => {
+                   
                     el.classList.remove('selected');
                 });
                 li.classList.add('selected'); // 현재 클릭한 날짜에 클래스 추가
